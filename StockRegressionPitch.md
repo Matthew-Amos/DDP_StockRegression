@@ -61,7 +61,7 @@ Resources
 
 Shiny App: https://equinaut.shinyapps.io/StockPriceRegression/
 
-GitHub Repo:
+GitHub Repo: https://github.com/equinaut/DDP_StockRegression
 
 **Financial Data & Info**
 
