@@ -1,0 +1,31 @@
+---
+title: "README"
+author: "equinaut"
+date: "February 24, 2016"
+output: html_document
+---
+
+Stock Regression
+
+This is to fulfill the requires of Coursera's Developing Data Products Project.
+
+This repo contains the following files:
+
+**For the Shiny App**
+
+- server.R, ui.R: The Shiny App
+
+- GetYFData.R: Custom script to import price data from Yahoo! Finance
+
+- BuildHPRMatrix.R: Custom script to convert price data into holding period returns
+
+- Markets.R: Data frame containing a small selection of more indexes and their tickers
+
+- AAPL.csv, VTI.csv: Price data for default views
+
+**For the Pitch**
+
+- StockRegressionPitch.Rpres, .md: The HTML5 presentation.
+
+Shiny App available at https://equinaut.shinyapps.io/StockPriceRegression/
+

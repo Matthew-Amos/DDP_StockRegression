@@ -1,0 +1,90 @@
+```{r, echo = F, warning = F, message = F, results = 'hide'}
+require(ggplot2)
+require(scales)
+
+AAPL <- read.csv('AAPL.csv')
+VTI <- read.csv('VTI.csv')
+
+Prices <- cbind(VTI[1:176,c(2,8)], AAPL[1:176,8])
+HPRs <- cbind(Prices[1:175,1], Prices[2:176,2:3] / Prices[1:175,2:3] - 1)
+colnames(HPRs) <- c("Date","VTI","AAPL")
+```
+
+
+Shiny App: Getting "Beta" and "Alpha" for a stock
+========================================================
+author: equinaut
+date: 2-24-2016
+
+Useful Statistics for Stock Returns
+========================================================
+
+**Beta** and **Alpha** are two commonly referenced statistics
+to describe a stock's return. *Beta* is a measure of volatility:
+how much a stock's return is influenced by movements in a broader
+index. *Alpha* is a measure of excess (positive or negative) return
+not explained by that index.
+
+Both of these parameters can be derived from the regression of
+the stocks **Holding Period Returns (HPRs)** against a given market index's
+HPRs.
+
+Sample Regression - Apple, VTI:
+========================================================
+
+Below we get our estimates by regressing Apple's (AAPL)
+monthly HPRs against Vanguard's Total U.S. Stock Market
+Index's (VTI) HPRs for the period ranging from Jan 2006
+to Jan 2016.
+
+```{r, echo = T}
+regression <- lm(AAPL ~ VTI, data = HPRs)
+coefficients(regression)
+```
+
+The slope of the regression is our *beta*, while the intercept
+is *alpha*.
+
+
+Shiny App: Run, Visualize
+========================================================
+
+https://equinaut.shinyapps.io/StockPriceRegression/
+
+This Shiny App allows you to quickly run and visualize
+this analysis. Users may enter any valid stock ticker they wish
+for any time period and compare it against a variety of indices.
+
+```{r, echo=F}
+      ggplot(HPRs, aes(x = VTI, y = AAPL)) +
+        geom_point() +
+        stat_smooth(method = 'lm') +
+        labs(x = "AAPL", y = "VTI", title="HPR Regression") +
+        theme(plot.title = element_text(size = 20),
+              axis.title = element_text(size = 15)) +
+        scale_x_continuous(labels = percent) +
+        scale_y_continuous(labels = percent)
+```
+
+
+Resources
+========================================================
+
+**Project**
+
+Shiny App: https://equinaut.shinyapps.io/StockPriceRegression/
+
+GitHub Repo:
+
+**Financial Data & Info**
+
+Stocks - http://www.google.com/finance/ and http://finance.yahoo.com/
+
+Vanguard ETFs - https://investor.vanguard.com/etf/list
+
+Beta - http://www.investopedia.com/terms/b/beta.asp
+
+Alpha - http://www.investopedia.com/terms/a/alpha.asp
+
+
+
