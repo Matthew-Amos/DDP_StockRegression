@@ -3,7 +3,8 @@ require(shiny)
 source("Markets.R")
 
 shinyUI(fluidPage(
-  titlePanel(textOutput("tick")),
+  titlePanel("Stock Regression"),
+  h1(textOutput("tick")),
   h3(textOutput("tRange")),
 
   sidebarLayout(
@@ -45,7 +46,8 @@ shinyUI(fluidPage(
         ),
         tabPanel("Documentation",
                  h4("Useful Links"),
-                 p(a(href="https://investor.vanguard.com/etf/list","ETFs", target="_blank"), " | ",
+                 p(a(href="https://github.com/equinaut/DDP_StockRegression", "GitHub Repo", target="_blank"), " | ",
+                   a(href="https://investor.vanguard.com/etf/list","ETFs", target="_blank"), " | ",
                    a(href="http://www.google.com/finance/","Google Finance", target="_blank"), " | ",
                    a(href="http://finance.yahoo.com/", "Yahoo! Finance", target="_blank"), " | ",
                    a(href="http://www.investopedia.com/terms/b/beta.asp","Beta Explained", target="_blank"), " | ",
@@ -71,10 +73,9 @@ shinyUI(fluidPage(
             for every 1% an index appreciates, one would expect a 1.20% return
             in the given stock."),
                  h5('Stock "Alpha"'),
-                 p("Alpha is the return performance of an asset as compared to an index, or
-            in other words the excess return. An alpha value of 2% for instance indicates
-            that 2% of the stock returns were not directly attributable to
-            returns in the broader index.")
+                 p("Alpha can be considered the excess return of a particular asset.
+            An alpha value of 2% for instance indicates that 2% of the stock returns
+            were not directly attributable to returns in the broader index.")
         )
       )
     )

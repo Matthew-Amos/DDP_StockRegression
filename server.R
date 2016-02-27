@@ -119,12 +119,12 @@ shinyServer(
 
     output$beta <- renderText(coefficients(lmfit())[[2]])
     output$alpha <- renderText(coefficients(lmfit())[[1]])
-    output$pval.intercept <- renderText(summary(lmfit())$coefficients[,4][[2]])
+    output$pval.intercept <- renderText(summary(lmfit())$coefficients[,4][[1]])
 
     output$pval.interpretation <- renderText({
-       if(summary(lmfit())$coefficients[,4][[2]]) {
+       if(summary(lmfit())$coefficients[,4][[1]] < .05) {
       paste("The p-value of ",
-            format(round(summary(lmfit())$coefficients[,4][[2]], 5), nsmall = 5),
+            format(round(summary(lmfit())$coefficients[,4][[1]], 5), nsmall = 5),
             " is significant at a level of .05. This indicates ",
             " that ",
             percent(exp(coefficients(lmfit())[[1]])-1),
@@ -137,13 +137,15 @@ shinyServer(
             sep = "")
     } else {
       paste("The p-value of ",
-            format(round(summary(lmfit())$coefficients[,4][[2]], 5), nsmall = 5),
-            " is not significantly different than 0 ",
+            format(round(summary(lmfit())$coefficients[,4][[1]], 5), nsmall = 5),
+            " means that we fail to reject the null hypothesis",
             " at a significance level of .05. This indicates ",
             " that ",
               ticklab(),
             " has no statistical ",
-            "evidence of an alpha value different than 0.",
+            "evidence of an intercept (alpha) value different than 0, and in turn",
+            " its monthly HPRs appear explainable by movements in the",
+            " broader index.",
             sep = ""
       )
     }})

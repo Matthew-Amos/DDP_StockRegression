@@ -16,7 +16,7 @@ index. *Alpha* is a measure of excess (positive or negative) return
 not explained by that index.
 
 Both of these parameters can be derived from the regression of
-the stocks **Holding Period Returns (HPRs)** against a given market index's
+the stock's **Holding Period Returns (HPRs)** against a given market index's
 HPRs.
 
 Sample Regression - Apple, VTI:
@@ -45,8 +45,6 @@ is *alpha*.
 Shiny App: Run, Visualize
 ========================================================
 
-https://equinaut.shinyapps.io/StockPriceRegression/
-
 This Shiny App allows you to quickly run and visualize
 this analysis. Users may enter any valid stock ticker they wish
 for any time period and compare it against a variety of indices.
@@ -65,13 +63,9 @@ GitHub Repo: https://github.com/equinaut/DDP_StockRegression
 
 **Financial Data & Info**
 
-Stocks - http://www.google.com/finance/ and http://finance.yahoo.com/
+Stocks - http://www.google.com/finance/
 
 Vanguard ETFs - https://investor.vanguard.com/etf/list
-
-Beta - http://www.investopedia.com/terms/b/beta.asp
-
-Alpha - http://www.investopedia.com/terms/a/alpha.asp
 
 
 
